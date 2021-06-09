@@ -29,9 +29,6 @@ namespace 終極密碼GUI
             Random x = new Random();
             ans = x.Next(1, 101);
             label5.Text = "使用次數";
-            
-
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -55,11 +52,27 @@ namespace 終極密碼GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-            label5.Text = count.ToString();
             
-            
+            DialogResult r;
+            r= MessageBox.Show("計時30秒,時間內猜對數字!", "遊戲說明", MessageBoxButtons.OKCancel);
+            if (r == DialogResult.OK)
+            {
+                timer1.Start();
+                textBox1.Text = 1.ToString();
+                button2.Enabled = true;
+            }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            button2.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label5.Text = count.ToString();
             if (int.Parse(textBox1.Text) < min || int.Parse(textBox1.Text) > max)
             {
                 MessageBox.Show($"請輸入 {min}-{max} 之間的'數字'!!");
@@ -73,7 +86,7 @@ namespace 終極密碼GUI
             else if (int.Parse(textBox1.Text) < ans)
             {
                 min = int.Parse(textBox1.Text);
-                label1.Text= $"請輸入{min} 到 {max}之間的數字";
+                label1.Text = $"請輸入{min} 到 {max}之間的數字";
                 count++;
             }
             else
