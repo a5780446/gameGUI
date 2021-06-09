@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace 終極密碼GUI
 {
+    //BUG --textbox為null
     public partial class Form1 : Form
     {
         public Form1()
@@ -30,7 +31,6 @@ namespace 終極密碼GUI
             label5.Text = "使用次數";
             
 
-            
             
         }
 
